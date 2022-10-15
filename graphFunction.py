@@ -2,13 +2,18 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import seaborn as sn
 import pandas as pd
+import numpy as np
+
+
+classes = ('plane', 'car', 'bird', 'cat', 'deer',
+           'dog', 'frog', 'horse', 'ship', 'truck')
 
 def plot_confusion(y_true, y_pred, val):
     cf_matrix = confusion_matrix(y_true, y_pred)
-    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *10, index = [i for i in classes],
-                     columns = [i for i in classes])
+    # df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *10, index = [i for i in classes],
+    #                  columns = [i for i in classes])
     plt.figure(figsize = (12,7))
-    sn.heatmap(df_cm, annot=True)
+    sn.heatmap(cf_matrix, annot=True)
     plt.savefig('plots/confusion_matrix/'+val+'.png')
     plt.clf()
 

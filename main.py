@@ -1,5 +1,5 @@
 
-from traintester import *
+from models import *
 from graphFunction import *
 import time
 from memory_profiler import profile
@@ -20,6 +20,7 @@ def runAlgorithm():
 
 if __name__ == '__main__':
     val = 'T0'
+    start_time = time.time()
     hist, yL, yP = runAlgorithm()   
     plot_confusion(yL,yP, val)
     plot_accuracies(hist, val)
